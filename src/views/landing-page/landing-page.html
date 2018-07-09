@@ -1,26 +1,83 @@
 <div id="landing-page" class="span-12 padding-standard">
-  <!-- <h1>
-  Welcome back and
-  </h1>
+  <h1>Is it Tights Weather in {{city}}?</h1>
   
-  <div>
+  <!-- <div>
     <h1 id="currentLocation"></h1>
     <h2 id="currentTemp"></h2>
     <h2 id="toggle">&#8451</h2>
     <h2 id="currentWeather"></h2>
     <h2 id="highTemp-lowTemp"></h2>
   </div> -->
-  <span>Now</span>
-  <p ng-bind="isItTightsWeatherNow"></p>
 
-  <span>3h</span>
-  <p ng-bind="isItTightsWeatherIn3h"></p>
+  <div class="margin-bottom">
+    <p>Now: {{currentWeather.isItTightsWeather ? 'Yes' : 'No'}}</p>
+    <p>Why:
+      <span 
+        ng-if="currentWeather.isItTightsWeather" 
+        ng-repeat="reason in currentWeather.reasonsItIs">
+        {{reason}}<br>
+      </span>
+      <span 
+        ng-if="!currentWeather.isItTightsWeather" 
+        ng-repeat="reason in currentWeather.reasonsItIsNot">
+        {{reason}}<br>
+      </span>
+    </p>
+  </div>
 
-  <span>6h</span>
-  <p ng-bind="isItTightsWeatherIn6h"></p>
+  <div class="margin-bottom" ng-repeat="weather in otherWeather track by $index">
+    <p>3h: {{weather.isItTightsWeather ? 'Yes' : 'No'}}</p>
+    <p>Why:
+      <span 
+        ng-if="weather.isItTightsWeather" 
+        ng-repeat="reason in weather.reasonsItIs">
+        {{reason}}<br>
+      </span>
+      <span 
+        ng-if="!weather.isItTightsWeather" 
+        ng-repeat="reason in weather.reasonsItIsNot">
+        {{reason}}<br>
+      </span>
+    </p>
+  </div>
+  <!-- <div class="margin-bottom">
+    <p>6h: {{weather.sixH.isItTightsWeather ? 'Yes' : 'No'}}</p>
+    <p>Why:
+      <span ng-if="weather.sixH.isItTightsWeather" ng-repeat="reason in weather.sixH.reasonsItIs">
+        {{reason}}
+      </span>
+      <span ng-if="!weather.sixH.isItTightsWeather" ng-repeat="reason in weather.sixH.reasonsItIsNot">
+        {{reason}}
+      </span>
+    </p>
+  </div>
+  <div class="margin-bottom">
+    <p>9h: {{weather.nineH.isItTightsWeather ? 'Yes' : 'No'}}</p>
+    <p>Why:
+      <span ng-if="weather.nineH.isItTightsWeather" ng-repeat="reason in weather.nineH.reasonsItIs">
+        {{reason}}
+      </span>
+      <span ng-if="!weather.nineH.isItTightsWeather" ng-repeat="reason in weather.nineH.reasonsItIsNot">
+        {{reason}}
+      </span>
+    </p>
+  </div> -->
 
-  <span>9h</span>
-  <p ng-bind="isItTightsWeatherIn9h"></p>
+  <!-- <div class="margin-bottom">
+    <p>In 3 hours: {{isItTightsWeatherIn3h ? 'Yes' : 'No'}}</p>
+    <p>Why: {{reason3h}}</p>
+  </div>
+
+  <div class="margin-bottom">
+    <p>In 6 hours: {{isItTightsWeatherIn6h ? 'Yes' : 'No'}}</p>
+    <p>Why: {{reason6h}}</p>
+  </div>
+
+  <div class="margin-bottom">
+    <p>In 9 hours: {{isItTightsWeatherIn9h ? 'Yes' : 'No'}}</p>
+    <p>Why: {{reason9h}}</p>
+  </div> -->
+
 
 
 </div>
